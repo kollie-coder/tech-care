@@ -7,6 +7,7 @@ const NavButtons = ({ name, icon }) => {
     <>
     <Flex 
     alignItems="center"
+    justifyContent="center"
      gap="10px" 
      alignContent="space-between"
      

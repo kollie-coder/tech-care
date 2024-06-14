@@ -1,9 +1,11 @@
 import { Box, Container, Divider, Flex, Image, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import icons from '../../constants/icons'
 import NavButtons from './NavButtons'
  
 const Navbar = () => {
+
+  const [ activeNav, setIsActiveNav ] = useState("Patient")
 
   const navData =  [
    { name: "Overview", icon: icons.home },
@@ -12,6 +14,10 @@ const Navbar = () => {
    { name: "Message", icon: icons.chat },
    { name: "Transactions", icon: icons.creditCard }
   ]
+
+  const handleNavClick = (name) => {
+    setIsActiveNav(name)
+  }
 
   return (
     <Container maxW={"1564px"} my={4}> 
@@ -27,7 +33,17 @@ const Navbar = () => {
         />
 
         {navData.map(item => (
-          <Box key={item.name}>
+          <Box 
+          key={item.name}
+          onClick={() => handleNavClick(item.name)}
+          bgColor={activeNav ===item.name ? "#01F0D0" : "transparent" }
+          borderRadius={"41px"}
+          alignContent={"center"}
+          w={"122px"}
+          h={"41px"}
+          cursor={"pointer"}
+          display={{ base: "none", xl: "block"}}
+          >
                <NavButtons
           name={item.name}
           icon={item.icon}

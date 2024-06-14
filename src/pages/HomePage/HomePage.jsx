@@ -89,7 +89,7 @@ const DiagHistory = LatestDiagnosis.diagnosis_history
       
       
     }}>
-    <Text fontSize={"24px"} fontWeight={"Bold"} position="sticky" top="0" 
+    <Text fontSize={"24px"} fontWeight={"Bold"} position="sticky" top="-5" 
          backgroundColor={"#FFFFFF"} zIndex={1}>
       Diagnostic List 
       </Text>

@@ -15,6 +15,7 @@ const PatientData = ({ name, age, gender, image }) => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
+       
         const data = await getPatients();
         setPatients(data);
 
@@ -54,9 +55,7 @@ const PatientData = ({ name, age, gender, image }) => {
      borderRadius={4}
      h={"60px"}
      px={"10px"}
-    
-     
-
+     cursor={"pointer"}
       >
 
 

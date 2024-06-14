@@ -128,7 +128,7 @@ const PatientInfo = () => {
          pt={"20px"} 
          pb={"16px"}
          position="sticky" 
-         top="-1" 
+         top="-6" 
          backgroundColor={"#FFFFFF"} 
          zIndex={1}
          > 
