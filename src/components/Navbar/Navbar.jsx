@@ -27,11 +27,14 @@ const Navbar = () => {
         />
 
         {navData.map(item => (
-          
-          <NavButtons
+          <Box key={item.name}>
+               <NavButtons
           name={item.name}
           icon={item.icon}
+
           />
+          </Box>
+       
 
         ))}
 

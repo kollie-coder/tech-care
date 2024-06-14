@@ -15,7 +15,8 @@ const PatientList = () => {
   
   return (
     <>
-    <Box w={"367px"} h={"1058px"} backgroundColor={"#FFFFFF"} 
+    <Box w={{ base: "100px", xl: '286px', "2xl": '367px' }}
+     h={"1058px"} backgroundColor={"#FFFFFF"} 
         mx={"18px"} px={"20px"} pb={"10px"} borderRadius={"16px"}
          overflowY={'auto'}
          sx={{
@@ -49,13 +50,14 @@ const PatientList = () => {
         backgroundColor={"#FFFFFF"} 
         zIndex={1}
         py={"20px"}
+        display={{ base: "none", xl: "flex"}}
         >
         <Text fontSize={24} fontWeight={"bold"}>Patients</Text>
         <Image src={icons.Search} alt='search' w={18} h={18} objectFit={"contain"} />
       </Flex>
 
     {patientData.map(item => (
-      <Box mt={"40px"}>
+      <Box mt={"40px"}  key={item.name}>
             <PatientData
                 name={item.name} 
                 age={item.age}

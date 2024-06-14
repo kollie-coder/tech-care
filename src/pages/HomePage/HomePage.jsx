@@ -1,21 +1,51 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box, Button, Flex, Grid, Image, Text } from '@chakra-ui/react'
 import VitalsCard from '../../components/VitalsCard/VitalsCard'
 import DiagonosticList from '../../components/DiagosticList/DiagonosticList'
 import Graph from '../../components/Graph/Graph'
+import useRequest from '../../lib/useRequest'
+import { getPatient } from '../../lib/requests'
+import { PatientContext } from '../../hooks/PatientContext'
 
 const HomePage = () => {
+
+  // Extracting Latest diagnosis data
+  const { selectedPatient } = useContext(PatientContext);
+
+ const LatestDiagnosis = selectedPatient;
+
+ if (!LatestDiagnosis) {
+  return <Text>Loading... Please wait </Text>;
+}
+
+// Extarcting Diagnosis History
+const DiagHistory = LatestDiagnosis.diagnosis_history
+
+
+
+   // Extracting vitals data
+   const respiratoryRate = DiagHistory[0].respiratory_rate;
+   const heartRate = DiagHistory[0].heart_rate;
+   const temperature = DiagHistory[0].temperature;
+
+
+   // To retrieve the DiagnosticList
+   const DiagnosticList = LatestDiagnosis.diagnostic_list;
+
+   
+
   return (
    <>
-   <Box 
+   
+    <Box 
       w={"766px"}
       h={"673px"}
       bgColor={"#FFFFFF"}
       borderRadius={"16px"}
-      mx={"16px"}
+      mx={"auto"}
     >
     <Text px={"20px"} py={"20px"} fontSize={24} fontWeight={"bold"}>
-      Diagonis History
+      Diagnosis History
       </Text>
     
     <Box 
@@ -28,15 +58,15 @@ const HomePage = () => {
         px={"16px"}
         py={"16px"}
         >
-      <Graph/>
+         <Graph patientData={LatestDiagnosis} />
     </Box>
 
-       <VitalsCard/>
+     <VitalsCard respiratoryRate={respiratoryRate} heartRate={heartRate} temperature={temperature} />
 
    </Box>
 
    <Box w={"766px"} h={"349px"} bgColor={"#FFFFFF"} 
-   borderRadius={"16px"} mx={"16px"} mt={"32px"}  
+   borderRadius={"16px"} mx={"auto"} mt={"32px"}  
    overflowY={'auto'} px={"20px"} py={"20px"}
     sx={{
       '::-webkit-scrollbar': {
@@ -65,9 +95,12 @@ const HomePage = () => {
       </Text>
 
       <Box mt={"40px"} >
-        <DiagonosticList/>
+        
+        <DiagonosticList DiagList={DiagnosticList}/>
       </Box>
    </Box>
+   
+   
 
    </>
   )

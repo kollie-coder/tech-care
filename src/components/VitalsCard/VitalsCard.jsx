@@ -1,15 +1,23 @@
-import { Box, Grid, Image, Text } from '@chakra-ui/react'
+import { Box, Flex, Grid, Image, Text } from '@chakra-ui/react'
 import React from 'react'
 import icons from '../../constants/icons'
 
-const VitalsCard = () => {
-  return (
+const VitalsCard = ({ respiratoryRate, heartRate, temperature }) => {
+  
+  const heartValue = heartRate.value;
+  const heartLevels = heartRate.levels
 
-    <Grid
-    templateColumns={["1fr", "repeat(2, 1fr)", "repeat(3, 1fr)"]} // Adjust columns based on screen size
-    gap={5} // Gap between boxes
-    p={5} // Padding around the grid
-  >
+  const respiratoryValue = respiratoryRate.value;
+  const respiratoryLevels = respiratoryRate.levels
+
+  const temperatureValue = temperature.value;
+  const temperatureLevels = temperature.levels
+
+  return (
+    <>
+
+  <Flex gap={5} p={5} overflowX="auto" sx={{ '&::-webkit-scrollbar': { display: 'none'} }}>
+
     <Box bg="#E0F3FA"
      height="242px"
       width="228px"
@@ -35,12 +43,12 @@ const VitalsCard = () => {
             fontSize={30} 
             fontWeight={"Bold"}
             >
-                 10 bpm 
+                 {respiratoryValue} bpm 
                  </Text>
         </Box>
 
         <Text fontSize={14}>
-            Normal
+            {respiratoryLevels}
             </Text>
         
     </Box>
@@ -66,13 +74,13 @@ const VitalsCard = () => {
 
                 <Text fontSize={30} 
                 fontWeight={"Bold"}>
-                    98.6°F 
+                    {temperatureValue} °F 
                 </Text>
 
             </Box>
 
                 <Text fontSize={14}>
-                Normal
+                   {temperatureLevels}
                 </Text>
         
     
@@ -100,20 +108,24 @@ const VitalsCard = () => {
 
                 <Text fontSize={30} 
                 fontWeight={"Bold"}> 
-                78 bpm 
+                {heartValue} bpm 
                 </Text>
 
             </Box>
 
             <Text display={'flex'} alignItems={"center"} gap={"8px"} fontSize={14}>
                 <Image src={icons.ArrowDown} alt='arrow-down' w={"10px"} h={"5px"}/>
-                Lower than Average
+                {heartLevels}
                 </Text>
 
 
 
     </Box>
-  </Grid>
+
+    </Flex>
+    </>
+
+  
   
   )
 }

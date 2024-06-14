@@ -3,7 +3,7 @@ import React from 'react'
 import icons from '../../constants/icons'
 import GraphItem from './GraphItem'
 
-const Graph = () => {
+const Graph = ({ patientData }) => {
   return (
     <>
      <Flex justifyContent={"space-between"}>
@@ -22,7 +22,7 @@ const Graph = () => {
         </Flex>
 
         <Box pt={"20px"}>
-           <GraphItem/> 
+           <GraphItem patientData={patientData} /> 
         </Box>
     </Box>
 
@@ -71,8 +71,8 @@ const Graph = () => {
             width="14px"
             height="14px"
             borderRadius="50%"
-            backgroundColor="#8C6FE6" // Change this to any color you prefer
-            mr={"4px"} // Adds some margin to the right of the circle
+            backgroundColor="#8C6FE6" 
+            mr={"4px"}
             />          
                 <Text fontSize={14} fontWeight={"Bold"}>
                 Diastolic

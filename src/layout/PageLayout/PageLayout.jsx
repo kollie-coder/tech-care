@@ -11,7 +11,7 @@ const PageLayout = ({children}) => {
 
         <Navbar/>
     
-        <Flex justifyContent={'space-between'}>
+        <Flex>
             
            <Box>
             <PatientList/>

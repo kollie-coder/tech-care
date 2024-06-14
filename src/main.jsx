@@ -6,6 +6,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react';
 import {mode} from '@chakra-ui/theme-tools';
 import { BrowserRouter } from 'react-router-dom'
+import { PatientProvider } from './hooks/PatientContext.jsx';
 
 
 const styles = {
@@ -31,11 +32,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   
   <React.StrictMode>
 
-    <BrowserRouter>
+ <PatientProvider>
+
+   <BrowserRouter>
     <ChakraProvider theme={theme}>
          <App />
     </ChakraProvider>
     </BrowserRouter>
+
+ </PatientProvider>
+   
     
   </React.StrictMode>,
 )
